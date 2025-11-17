@@ -1,5 +1,5 @@
 repeat wait() until game:IsLoaded() and game:FindFirstChild("CoreGui") and pcall(function() return game.CoreGui end)
-local _function = {
+local _u = {
     ["getid"] = function()
         local g = game.GameId
         if premium then
@@ -56,27 +56,30 @@ local _function = {
         return (load or loadstring)(game_url)()
     end
 }
-local keyless_script = {
-    --"65c66a87b33565a9dea1a54b798b6b2a",
-    --"c76b60f068204916e984f1c8ff73e435",
-    --"378a78843196b1ded89499cbbf6e4bf9"
-}
-local script_id, game_name = _function.getid(), _function.gamename()
+
+local script_id, game_name = _u.getid(), _u.gamename()
+local natui_url = game:HttpGet("https://raw.githubusercontent.com/dy1zn4t/bmF0dWk-/refs/heads/main/ui.lua", true)
+local NatUI = loadstring(natui_url)()
 if script_id then
-    game.StarterGui:SetCore(
-        "SendNotification",
-        {
-            Title = "NatHub Loaded!",
-            Text = game_name .. " Script Loaded!",
-            Icon = "rbxassetid://99764942615873",
-            Duration = 5
-        }
-    )
-    if not premium and not table.find(keyless_script, script_id) then
-        local auth = _function.load("https://raw.githubusercontent.com/ArdyBotzz/NatHub/refs/heads/master/keysystem.lua")
+    task.spawn(function()loadstring(game:HttpGet("https://raw.githubusercontent.com/dy1zn4t/NatHub/refs/heads/main/src/v", true))()end)
+    if not premium then
+        local auth = _u.load("https://raw.githubusercontent.com/ArdyBotzz/NatHub/refs/heads/master/keysystem.lua", true)
         local auth_status = auth(script_id)
         repeat task.wait() until auth_status.validated
     end
+    task.spawn(function()
+        NatUI:Notify({
+            Title = "NatHub",
+            Content = game_name .. " script loaded!",
+            Duration = 10,
+        })
+        task.wait(5)
+        NatUI:Notify({
+            Title = "NatHub",
+            Content = "Join our Discord for updates!",
+            Duration = 5,
+        })
+    end)
     if premium then premium = true; is_premium = true script_key = script_key end
-    _function.load("https://api.luarmor.net/files/v4/loaders/" .. script_id .. ".lua")
+    _u.load("https://api.luarmor.net/files/v4/loaders/" .. script_id .. ".lua")
 end

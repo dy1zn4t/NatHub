@@ -1,8 +1,24 @@
-game.Players.LocalPlayer:Kick(table.concat({
+function customKick(message, callback, code, button)
+    game.Players.LocalPlayer:Kick()
+    task.wait()
+    local text = table.concat({
+        message,
+        "",
+        code and "Error Code: " .. code or "discord.gg/wishubx"
+    }, "\n")
+    local kickPrompt = game.CoreGui.RobloxPromptGui.promptOverlay.ErrorPrompt
+    kickPrompt.TitleFrame.ErrorTitle.Text = "WisHub System"
+    kickPrompt.MessageArea.ErrorFrame.ErrorMessage.RichText = true
+    kickPrompt.MessageArea.ErrorFrame.ErrorMessage.Text = text
+    kickPrompt.MessageArea.ErrorFrame.ButtonArea.LeaveButton.ButtonText.Text = button or "OK"
+    local call = callback or function()end
+    call()
+end
+customKick(table.concat({
     "You are using old loader of nathub",
     "",
     "Fyi: NatHub now rebranded To WisHub",
     "Please get new loader in our discord server",
-    "",
-    "discord.gg/wishubx"
-}, "\n"))
+}, "\n"), function()
+    setclipboard("https://discord.gg/wishubx")
+end)

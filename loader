@@ -4,7 +4,7 @@ function customKick(message, callback, code, button)
     local text = table.concat({
         message,
         "",
-        code and "Error Code: " .. code or "discord.gg/wishubx"
+        code and "Error Code: " .. code or [[<b><font color="rgb(92, 0, 154)">d</font><font color="rgb(96, 0, 157)">i</font><font color="rgb(101, 0, 161)">s</font><font color="rgb(106, 0, 165)">c</font><font color="rgb(111, 0, 169)">o</font><font color="rgb(116, 0, 173)">r</font><font color="rgb(121, 0, 177)">d</font><font color="rgb(126, 0, 181)">.</font><font color="rgb(131, 0, 185)">g</font><font color="rgb(135, 0, 188)">g</font><font color="rgb(140, 0, 192)">/</font><font color="rgb(145, 0, 196)">w</font><font color="rgb(150, 0, 200)">i</font><font color="rgb(155, 0, 204)">s</font><font color="rgb(160, 0, 208)">h</font><font color="rgb(165, 0, 212)">u</font><font color="rgb(170, 0, 216)">b</font><font color="rgb(175, 0, 220)">x</font></b>]]
     }, "\n")
     local kickPrompt = game.CoreGui.RobloxPromptGui.promptOverlay.ErrorPrompt
     kickPrompt.TitleFrame.ErrorTitle.Text = "WisHub System"
@@ -15,9 +15,9 @@ function customKick(message, callback, code, button)
     call()
 end
 customKick(table.concat({
-    "You are using old loader of nathub",
+    "You are using old loader of <b>nathub</b>",
     "",
-    "Fyi: NatHub now rebranded To WisHub",
+    "Fyi: NatHub now rebranded To <b>WisHub</b>",
     "Please get new loader in our discord server",
 }, "\n"), function()
     setclipboard("https://discord.gg/wishubx")
